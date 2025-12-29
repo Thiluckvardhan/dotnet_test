@@ -6,6 +6,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test1", "Test1", "{E62EC963
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediSureClinicSimplePatientBilling", "Test1\MediSureClinicSimplePatientBilling\MediSureClinicSimplePatientBilling.csproj", "{D483EF16-88A9-2481-78FF-37FDE213F40C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickMartTradersProfitCalculator", "Test1\QuickMartTradersProfitCalculator\QuickMartTradersProfitCalculator.csproj", "{63F43866-348F-F21E-3985-1A9EB8D14AD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,14 +18,19 @@ Global
 		{D483EF16-88A9-2481-78FF-37FDE213F40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D483EF16-88A9-2481-78FF-37FDE213F40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D483EF16-88A9-2481-78FF-37FDE213F40C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F43866-348F-F21E-3985-1A9EB8D14AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F43866-348F-F21E-3985-1A9EB8D14AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F43866-348F-F21E-3985-1A9EB8D14AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F43866-348F-F21E-3985-1A9EB8D14AD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D483EF16-88A9-2481-78FF-37FDE213F40C} = {E62EC963-C6CD-4E20-543E-AF41AB435F95}
+		{63F43866-348F-F21E-3985-1A9EB8D14AD9} = {E62EC963-C6CD-4E20-543E-AF41AB435F95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8DBCD229-B6FF-409E-9AF0-D4A564C8D4CF}
+		SolutionGuid = {B89C74EF-19FC-4F5C-B20E-AA7783CAF74E}
 	EndGlobalSection
 EndGlobal

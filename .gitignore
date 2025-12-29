@@ -115,7 +115,8 @@ ipch/
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
-
+*.vs/
+*.vscode/
 # Visual Studio profiler
 *.psess
 *.vsp

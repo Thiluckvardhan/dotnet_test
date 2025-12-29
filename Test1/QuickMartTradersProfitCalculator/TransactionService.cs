@@ -8,14 +8,20 @@ namespace Question2
     public class TransactionService
     {
         #region static Things
+        // Holds the most recently saved transaction in memory
         public static SaleTransaction LastTransaction;
+        // Tracks if a last transaction exists for view/recalculate operations
         public static bool HasLastTransaction = false;
         #endregion
 
         #region CreateTransaction Method
+        /// <summary>
+        /// Creates a new sales transaction by collecting inputs, validates them,
+        /// computes profit/loss metrics, and stores it as the last transaction.
+        /// </summary>
         public void CreateTransaction()
         {
-            //variable Declaration
+            // Local variables to capture user inputs and perform calculations
             string invoice;
             string customer;
             string item;
@@ -31,6 +37,7 @@ namespace Question2
             Console.Write("Enter Invoice No: ");
             invoice = Console.ReadLine();
 
+            // Validate non-empty Invoice No
             if (string.IsNullOrWhiteSpace(invoice))
             {
                 Console.WriteLine("Invoice No cannot be empty.");
@@ -47,6 +54,7 @@ namespace Question2
             //quantity input
             Console.Write("Enter Quantity: ");
             qtyInput = Console.ReadLine();
+            // Parse and validate quantity (> 0)
             if (!int.TryParse(qtyInput, out qty))
             {
                 Console.WriteLine("Please enter a valid number.");
@@ -61,6 +69,7 @@ namespace Question2
             //purchase amount input
             Console.Write("Enter Purchase Amount (total): ");
             pInput = Console.ReadLine();
+            // Parse and validate purchase amount (> 0)
             if (!decimal.TryParse(pInput, out purchase))
             {
                 Console.WriteLine("Please enter a valid number.");
@@ -75,6 +84,7 @@ namespace Question2
             //selling amount input
             Console.Write("Enter Selling Amount (total): ");
             sInput = Console.ReadLine();
+            // Parse and validate selling amount (>= 0)
             if (!decimal.TryParse(sInput, out selling))
             {
                 Console.WriteLine("Please enter a valid number.");
@@ -87,6 +97,7 @@ namespace Question2
             }
 
             //adding input to saletransaction object
+            // Populate the transaction object from collected inputs
             transaction = new SaleTransaction();
             transaction.InvoiceNo = invoice;
             transaction.CustomerName = customer;
@@ -95,11 +106,14 @@ namespace Question2
             transaction.PurchaseAmount = purchase;
             transaction.SellingAmount = selling;
 
+            // Compute profit/loss metrics for the transaction
             Compute(transaction);
 
+            // Persist as the last transaction for viewing/recalculation later
             LastTransaction = transaction;
             HasLastTransaction = true;
 
+            // Output a brief summary to the console
             Console.WriteLine();
             Console.WriteLine("Transaction saved successfully.");
             Console.WriteLine($"Status: {transaction.ProfitOrLossStatus}");
@@ -111,14 +125,19 @@ namespace Question2
         #endregion
 
         #region ViewTransaction Method
+        /// <summary>
+        /// Displays the most recently saved transaction; shows a message if none exists.
+        /// </summary>
         public void ViewTransaction()
         {
+            // Guard: No transaction to show if none created yet
             if (!HasLastTransaction)
             {
                 Console.WriteLine("No transaction available. Please create a new transaction first.");
                 return;
             }
 
+            // Display last transaction details with basic formatting
             Console.WriteLine();
             Console.WriteLine("***********************Last Transaction**************************");
             Console.WriteLine($"InvoiceNo: {LastTransaction.InvoiceNo}");
@@ -136,16 +155,22 @@ namespace Question2
         #endregion
 
         #region Recalculate Method
+        /// <summary>
+        /// Recomputes profit/loss metrics for the last transaction and prints the updated values.
+        /// </summary>
         public void Recalculate()
         {
+            // Guard: ensure we have a transaction to recalculate
             if (!HasLastTransaction)
             {
                 Console.WriteLine("No transaction available. Please create a new transaction first.");
                 return;
             }
 
+            // Recompute metrics using the existing transaction data
             Compute(LastTransaction);
 
+            // Output recalculation results
             Console.WriteLine();
             Console.WriteLine("Recalculated Successfully.");
             Console.WriteLine($"Status: {LastTransaction.ProfitOrLossStatus}");
@@ -157,8 +182,12 @@ namespace Question2
         #endregion
 
         #region Private Compute Method
+        /// <summary>
+        /// Computes the profit or loss status, amount, and margin percent for a transaction.
+        /// </summary>
         private void Compute(SaleTransaction t)
         {
+            // Determine status and absolute profit/loss amount
             if(t.SellingAmount > t.PurchaseAmount)
             {
                 t.ProfitOrLossStatus = "PROFIT";
@@ -175,6 +204,7 @@ namespace Question2
                 t.ProfitOrLossAmount = 0;
             }
 
+            // Calculate profit margin percentage relative to purchase amount
             t.ProfitMarginPercent = (t.ProfitOrLossAmount / t.PurchaseAmount) * 100;
         }
         #endregion

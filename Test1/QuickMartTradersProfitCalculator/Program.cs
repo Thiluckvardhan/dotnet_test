@@ -7,15 +7,18 @@ namespace Question2
     /// </summary>
     class Program
     {
-
-        //Main Method
+        /// <summary>
+        /// Application entry point. Displays a menu loop and routes user selections to transaction actions.
+        /// </summary>
         static void Main(string[] args)
         {
+            // Initialize the service and loop control flag
             TransactionService service = new TransactionService();
             bool running = true;
 
             while (running)
             {
+                // Render menu options for user interaction
                 Console.WriteLine("**************QuickMart Traders*************");
                 Console.WriteLine("1. Create New Transaction");
                 Console.WriteLine("2. View Last Transaction");
@@ -29,23 +32,28 @@ namespace Question2
                 switch (option)
                 {
                     case "1":
+                        // Create a new transaction (collect inputs)
                         service.CreateTransaction();
                         break;
 
                     case "2":
+                        // Display the most recently created transaction
                         service.ViewTransaction();
                         break;
 
                     case "3":
+                        // Recalculate and show profit or loss for the last transaction
                         service.Recalculate();
                         break;
 
                     case "4":
+                        // Exit the application loop gracefully
                         running = false;
                         Console.WriteLine("Thank you. Application closed normally.");
                         break;
 
                     default:
+                        // Handle invalid menu selections
                         Console.WriteLine("Invalid option. Please try again.");
                         Console.WriteLine();
                         break;
