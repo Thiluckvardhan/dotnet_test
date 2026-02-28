@@ -38,7 +38,7 @@ INSERT INTO Hotels VALUES
 ('Dubai Grand','5 Star','Dubai',12000);
 
 
-
+-- =============================================
 -- Author:		<Author,,Thiluck>
 -- Create date: <Create Date,29-02-2026,>
 -- Description:	<Description,Stored Procedures,>
